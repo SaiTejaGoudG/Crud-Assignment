@@ -29,7 +29,7 @@ connection.connect(function(err) {
 app.post('/register',async(req,res)=>{
     const {email,password}=req.body;  
     const saltrounds = 10
-    const hashedPasswd = await bcrypt.hash(password,saltrounds)  // Hashing the user's password
+    const hashedPasswd = await bcrypt.hash(password,saltrounds)  
     console.log(hashedPasswd)
 
     // performing queries using the query() method of the connection object.
@@ -55,7 +55,7 @@ app.post('/register',async(req,res)=>{
 
 // Login Api
 app.post('/login',(req,res)=>{
-    const {email,password}=req.body; // extracting the user's registration information from the request body.
+    const {email,password}=req.body; 
     connection.query(`SELECT * from users WHERE email= ?`,[email],(err,data)=>{
         if(err){
             return res.status(500).json({err})
@@ -68,7 +68,6 @@ app.post('/login',(req,res)=>{
                     return res.status(500).json({err})
                 }
                 else if(result){
-                    // Returning the JWT to the client in the response.
                     return res.status(200).json({message:"Logged in successfully"})
 
                 }else{
@@ -113,8 +112,6 @@ app.post('/student/register',async(req,res)=>{
             })
         }
     })
-
-    // const emailCheck = await connection.query(`SELECT * from students WHERE email =?`[email])
 })
 
 // Get all students
