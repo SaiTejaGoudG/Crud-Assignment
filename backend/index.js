@@ -143,33 +143,6 @@ app.patch('/students/:id',(req,res)=>{
     const {id} =req.params;
     const {firstName,lastName,email,phoneNo,address}=req.body;
     connection.query(`UPDATE students SET first_name=?,last_name=?,contact=?,email=?,address=? WHERE id = ?`,[firstName,lastName,phoneNo,email,address,id],(err,data)=>{
-        // check unique phone number
-        // connection.query(`SELECT * FROM students where contact = ? and id != ?`,[phoneNo,id],(err,data)=>{
-        //     if(err){
-        //         return res.status(500).json({message:"Internal server error in db query"})
-        //     }
-        //     else if (data.length>0){
-        //         return res.status(400).json({message:"Mobile already exists"})
-        //     }else{
-        //     // check unique email 
-        //         connection.query(`SELECT * FROM students where email = ? and id != ?`,[email,id],(err,data)=>{
-        //             if(err){
-        //                 return res.status(500).json({message:"Internal server error in db query"})
-        //             }
-        //             else if (data.length>0){
-        //                 return res.status(400).json({message:"Email already exists"})
-        //             }else{
-        //                 //create user
-        //                 connection.query(`INSERT INTO students (first_name,last_name,email,contact,address) VALUES (?,?,?,?,?);`,[firstName,lastName,email,phoneNo,address],(err,data)=>{
-        //                     if(err){
-        //                         return res.status(500).json(err)
-        //                     }
-        //                     return res.status(200).json(data)
-        //                 })
-        //             }
-        //         })
-        //     }
-        // })
         if(err){
             return res.status(500).json(err)
         }
