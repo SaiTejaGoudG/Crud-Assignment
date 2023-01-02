@@ -70,9 +70,9 @@ const Update = (props) => {
                     navigate('/Home')
                 })
             }).catch(err=>{
+                const erorMessage =err.response.data?.message
                 swal({
-                    title: "Already Exists",
-                    text: "Enter Another Contact Or Email!",
+                    text:erorMessage?erorMessage:"Something went wrong!",
                     icon:'error'
                 })
             })
