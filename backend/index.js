@@ -102,7 +102,9 @@ app.post('/student/register',async(req,res)=>{
                     return res.status(400).json({message:"Email already exists"})
                 }else{
                     //create user
-                    connection.query(`INSERT INTO students (first_name,last_name,email,contact,address) VALUES (?,?,?,?,?);`,[firstName,lastName,email,phoneNo,address],(err,data)=>{
+                    connection.query(`INSERT INTO students (first_name,last_name,email,contact,address) VALUES (?,?,?,?,?);`,
+                    [firstName,lastName,email,phoneNo,address],
+                    (err,data)=>{
                         if(err){
                             return res.status(500).json(err)
                         }
@@ -139,7 +141,9 @@ app.get('/students/:id',(req,res)=>{
 app.patch('/students/:id',(req,res)=>{
     const {id} =req.params;
     const {firstName,lastName,email,phoneNo,address}=req.body;
-    connection.query(`UPDATE students SET first_name=?,last_name=?,contact=?,email=?,address=? WHERE id = ?`,[firstName,lastName,phoneNo,email,address,id],(err,data)=>{
+    connection.query(`UPDATE students SET first_name=?,last_name=?,contact=?,email=?,address=? WHERE id = ?`,
+    [firstName,lastName,phoneNo,email,address,id],
+    (err,data)=>{
         if(err){
             return res.status(500).json(err)
         }
