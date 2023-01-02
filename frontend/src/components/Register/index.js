@@ -50,8 +50,9 @@ const Register = () => {
                 navigate('/Home')
             })
         }).catch(err=>{
+            const erorMessage =err.response.data?.message
             swal({
-                text: "Something went wrong!",
+                text:erorMessage?erorMessage:"Something went wrong!",
                 icon:'error'
             })
         })
