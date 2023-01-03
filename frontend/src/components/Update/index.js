@@ -6,7 +6,7 @@ import axios from 'axios';
 import swal from 'sweetalert'
 import './index.css'
 
-const Update = (props) => {
+const Update = () => {
     const navigate = useNavigate();
     const {id} = useParams();
     const [data, setData] = useState({
@@ -72,7 +72,8 @@ const Update = (props) => {
             }).catch(err=>{
                 const erorMessage =err.response.data?.message
                 swal({
-                    text:erorMessage?erorMessage:"Something went wrong!",
+                    title: "Already Exist",
+                    text:erorMessage?erorMessage:"Existing Email Or Contact !",
                     icon:'error'
                 })
             })
