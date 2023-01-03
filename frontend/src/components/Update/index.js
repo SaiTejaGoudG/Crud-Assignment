@@ -15,9 +15,8 @@ const Update = () => {
         phoneNo: '',
         email: '',
         address: '',
-        showError: false,
     })
-    const {firstName,lastName,phoneNo,email,address,showError} = {...data}
+    const {firstName,lastName,phoneNo,email,address} = {...data}
 
     const [isLoading,setIsLoading] = useState(false)
 
@@ -99,7 +98,6 @@ const Update = () => {
                     required
                     />
                 </div>
-                {showError === true ? ( <p className="errMsg">Required*</p> ) : null}
                 <div className='label-container'>
                     <label className='label-elements' htmlFor='lastName'>LastName</label>
                     <input
@@ -111,7 +109,6 @@ const Update = () => {
                     required
                     />
                 </div>
-                {showError === true ? ( <p className="errMsg">Required*</p> ) : null}
                 <div className='label-container'>
                     <label className='label-elements' htmlFor='phoneNo'>Contact</label>
                     <input
@@ -123,7 +120,6 @@ const Update = () => {
                     required
                     />
                 </div>
-                {showError === true ? ( <p className="errMsg">Contact must be 10 digits*</p> ) : null}
                 <div className='label-container'>
                     <label className='label-elements' htmlFor='email'>Email</label>
                     <input
@@ -135,7 +131,6 @@ const Update = () => {
                     required
                     />
                 </div>
-                {showError === true ? ( <p className="errMsg">*Enter Valid Email</p> ) : null}
                 <div className='label-container'>
                     <label className='label-elements' htmlFor='address'>Address</label>
                     <input
@@ -147,7 +142,6 @@ const Update = () => {
                     required
                     />
                 </div>
-                {showError === true ? ( <p className="errMsg">Required*</p> ) : null}
                 <div className='btn-container'>
                     <button className='home-button'>Save</button>
                 </div>
